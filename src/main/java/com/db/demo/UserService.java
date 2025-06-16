@@ -7,18 +7,22 @@ import java.util.List;
 @Service
 public class UserService
 {
-    private UserRepo up;
+    private final UserRepo up;
+
     public UserService(UserRepo up)
     {
         this.up = up;
     }
 
-    public void addUser(User user)
+    public User addUser(String name, String email)
     {
-        up.save(user);
+        User u = new User();
+        u.setName(name);
+        u.setEmail(email);
+        return up.save(u);
     }
 
-    public List<User> getAll()
+    public List<User> findAll()
     {
         return up.findAll();
     }

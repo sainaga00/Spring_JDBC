@@ -16,12 +16,12 @@ public class HomeController
 
     @PostMapping
     public String addUser(@RequestBody User user) {
-        service.addUser(user);
+        service.addUser(user.getName(),user.getEmail());
         return "User added successfully!";
     }
 
     @GetMapping
     public List<User> getAll() {
-        return service.getAll();
+        return service.findAll();
     }
 }
